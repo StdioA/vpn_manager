@@ -1,0 +1,34 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+
+{% block admin_change_form_document_ready %}{{ block.super }}
+<script type="text/javascript">
+function password(length, special) {
+  var password = "";
+  for (var i = 1; i <= length; i++) {
+    randomNumber = (Math.floor((Math.random() * 36))) + 48;
+    if (randomNumber > 57) {
+      randomNumber += 7;
+    }
+    password += String.fromCharCode(randomNumber)
+  }
+  return password;
+}
+
+(function ($) {
+  $(document).ready(function () {
+    var submit_row = $(".submit-row");
+    submit_row.prepend("<input type=\"submit\" name=\"_generate\" value=\"Generate password\">");
+
+    $("#id_password").val(password(8));
+
+    $("[name=_generate]").on("click", function (e) {
+      e.preventDefault();
+
+      $("#id_password").val(password(8));
+    });
+  });
+
+})(django.jQuery);
+</script>
+{% endblock %}
