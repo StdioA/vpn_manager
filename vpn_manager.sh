@@ -16,9 +16,9 @@ stop() {
 start() {
   docker run --name ${ContainerName} --rm \
     -p 8000:8000 \
-    -v ${CurDir}:/usr/src/app \
     ${Image}
     # -v /$(pwd):/usr/src/app \
+    # -v ${CurDir}:/usr/src/app \
 }
 
 reload() {
