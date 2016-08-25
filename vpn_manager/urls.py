@@ -15,9 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-# from account.admin import vpn_admin_site
 
 urlpatterns = [
-    # url(r'^', vpn_admin_site.urls),
     url(r'^', admin.site.urls)
 ]
