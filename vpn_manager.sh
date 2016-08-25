@@ -5,7 +5,7 @@ Image="stdioa/vpn_manager:v1"
 ContainerName="vpn_man_container"
 
 build-img() {
-  docker build -t ${Image} .
+  docker build --no-cache -t ${Image} .
 }
 
 stop() {
@@ -18,6 +18,7 @@ start() {
     -p 8000:8000 \
     -v ${CurDir}:/usr/src/app \
     ${Image}
+    # -v /$(pwd):/usr/src/app \
 }
 
 reload() {
